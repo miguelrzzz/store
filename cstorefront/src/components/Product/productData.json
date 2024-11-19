@@ -1,0 +1,57 @@
+[
+  {
+    "categoria": "mouse",
+    "id": 1,
+    "nombre": "Mouse Logitech Pop Óptico",
+    "descripcion": "Mouse Logitech Pop Óptico 4000Dpi 4 Botones Ambidiestro Inalámbrico Bluetooth Morado 910-006647",
+    "marca": "LOGITECH",
+    "sku": "LT-910006647",
+    "precioOriginal": 657,
+    "stock": 50,
+    "img": "/img/mouseL1.jpg"
+  },
+  {
+    "categoria": "mouse",
+    "id": 1,
+    "nombre": "Mouse Inalambrico Logitech",
+    "descripcion": "Mouse Inalambrico Logitech M350 Usb/Bluetooth Rosa (910-005769)",
+    "marca": "LOGITECH",
+    "sku": "AC-38500-M45",
+    "precioOriginal": 440,
+    "stock": 50,
+    "img": "/img/mouseL2.jpg"
+  },
+  {
+    "categoria": "mouse",
+    "id": 1,
+    "nombre": "Mouse Gamer Logitech G Pro Óptico",
+    "descripcion": "Mouse Gamer Logitech G Pro Óptico 25600Dpi Inalámbrico Usb-A Negro 910-005271",
+    "marca": "LOGITECH",
+    "sku": "LT-910005271",
+    "precioOriginal": 2000,
+    "stock": 50,
+    "img": "/img/mouseL3.jpg"
+  },
+  {
+    "categoria": "mouse",
+    "id": 1,
+    "nombre": "Mouse Bluetooth Logitech Mx Anywhere 3",
+    "descripcion": "El Mouse Logitech Óptico MX Anywhere 3 Inalámbrico USB en color rosa es un dispositivo diseñado para ofrecer comodidad y funcionalidad en el uso diario. Este mouse cuenta con una tecnología de batería de polímero de litio, con una capacidad de 500 mAh, lo que permite un uso prolongado sin necesidad de recargas frecuentes. Su diseño ergonómico y su peso de 99 g lo hacen ideal para largas jornadas de trabajo.\n\nEl mouse incluye un receptor unificador que permite la conexión a través de tecnología inalámbrica, con un alcance de hasta 10 metros. Además, es compatible con múltiples dispositivos gracias a su interfaz de RF inalámbrica y Bluetooth, lo que facilita su uso en diferentes sistemas operativos, incluyendo Windows 10, Mac OS X, Linux, iPadOS y Chrome.\n\nCon un total de 6 botones, este mouse ofrece funciones como retroceso y avance, y cuenta con una rueda de desplazamiento que permite un desplazamiento tanto vertical como horizontal. La resolución de movimiento es de 4000 DPI, lo que proporciona una alta precisión en el control del cursor. La personalización de la resolución de movimiento es posible, adaptándose a las necesidades del usuario.\n\nEl mouse se recarga a través de un puerto USB Tipo C, y se incluye un cable de USB Tipo A a USB Tipo C en el paquete. Su diseño de superficie monótono en color rosa le otorga un aspecto moderno y atractivo, mientras que su capacidad para trabajar en cualquier superficie lo convierte en una herramienta versátil para la oficina o el hogar.\n\nEl receptor, que pesa solo 2 g, es compacto y fácil de transportar, con dimensiones de 1.44 cm de ancho, 1.84 cm de altura y 6.6 mm de fondo. La profundidad del mouse es de 100.5 mm y su ancho es de 65 mm, lo que lo hace adecuado para el uso diestro.\n\nEn resumen, el Mouse Logitech Óptico MX Anywhere 3 combina tecnología avanzada, diseño ergonómico y versatilidad, siendo una opción ideal para quienes buscan un mouse eficiente y atractivo para su trabajo diario.",
+    "marca": "LOGITECH",
+    "sku": "AC-38500-M61",
+    "precioOriginal": 1000,
+    "stock": 50,
+    "img": "/img/mouseL4.jpg"
+  },
+  {
+    "categoria": "mouse",
+    "id": 1,
+    "nombre": "Mouse Bluetooth Logitech Mx Anywhere 3s",
+    "descripcion": "El Mouse Logitech Óptico MX Anywhere 3s Inalámbrico USB en color rosa es un dispositivo diseñado para ofrecer comodidad y funcionalidad en el uso diario. Este mouse cuenta con una tecnología de batería de polímero de litio, con una capacidad de 500 mAh, lo que permite un uso prolongado sin necesidad de recargas frecuentes. Su diseño ergonómico y su peso de 99 g lo hacen ideal para largas jornadas de trabajo.\n\nEl mouse incluye un receptor unificador que permite la conexión a través de tecnología inalámbrica, con un alcance de hasta 10 metros. Además, es compatible con múltiples dispositivos gracias a su interfaz de RF inalámbrica y Bluetooth, lo que facilita su uso en diferentes sistemas operativos, incluyendo Windows 10, Mac OS X, Linux, iPadOS y Chrome.\n\nCon un total de 6 botones, este mouse ofrece funciones como retroceso y avance, y cuenta con una rueda de desplazamiento que permite un desplazamiento tanto vertical como horizontal. La resolución de movimiento es de 4000 DPI, lo que proporciona una alta precisión en el control del cursor. La personalización de la resolución de movimiento es posible, adaptándose a las necesidades del usuario.\n\nEl mouse se recarga a través de un puerto USB Tipo C, y se incluye un cable de USB Tipo A a USB Tipo C en el paquete. Su diseño de superficie monótono en color rosa le otorga un aspecto moderno y atractivo, mientras que su capacidad para trabajar en cualquier superficie lo convierte en una herramienta versátil para la oficina o el hogar.\n\nEl receptor, que pesa solo 2 g, es compacto y fácil de transportar, con dimensiones de 1.44 cm de ancho, 1.84 cm de altura y 6.6 mm de fondo. La profundidad del mouse es de 100.5 mm y su ancho es de 65 mm, lo que lo hace adecuado para el uso diestro.\n\nEn resumen, el Mouse Logitech Óptico MX Anywhere 3 combina tecnología avanzada, diseño ergonómico y versatilidad, siendo una opción ideal para quienes buscan un mouse eficiente y atractivo para su trabajo diario.",
+    "marca": "LOGITECH",
+    "sku": "SKU: 910-006932",
+    "precioOriginal": 1300,
+    "stock": 50,
+    "img": "/img/mouseL5.jpg"
+  }
+]

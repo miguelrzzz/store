@@ -1,0 +1,27 @@
+.custom_title{
+    font-size: 18px;
+}
+.hamburger-line {
+    @apply h-0.5 w-full bg-white rounded-lg transition-all duration-300;
+}
+
+.nav-menu {
+    @apply transition-all duration-300 ease-in-out;
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}

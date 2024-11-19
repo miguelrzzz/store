@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "email": "juan.perez@ejemplo.com",
+    "telefono": "+5555555555",
+    "direccion": {
+      "calle": "Av. Principal",
+      "numero": 123,
+      "ciudad": "Ciudad Ejemplo",
+      "pais": "País Ejemplo"
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "María",
+    "apellido": "García",
+    "email": "maria.garcia@ejemplo.com",
+    "telefono": "+6666666666",
+    "direccion": {
+      "calle": "Calle Secundaria",
+      "numero": 456,
+      "ciudad": "Ciudad Ejemplo",
+      "pais": "País Ejemplo"
+    }
+  }
+]
