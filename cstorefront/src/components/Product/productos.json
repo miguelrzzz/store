@@ -17,123 +17,205 @@
       "sku": "RYZEN5-5600X"
     },
     {
-      "nombre": "Intel Core i5-12400",
-      "descripcion": "Procesador Intel de gran rendimiento para tareas exigentes.",
-      "precioOriginal": 2200,
-      "img": "https://example.com/i5-12400.jpg",
-      "marca": "Intel",
-      "sku": "I5-12400"
+      "nombre": "AMD Ryzen 7 5800X",
+      "descripcion": "Procesador de 8 núcleos y 16 hilos, ideal para gaming y creación de contenido.",
+      "precioOriginal": 4399,
+      "img": "https://example.com/ryzen7-5800x.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN7-5800X"
     },
     {
-      "nombre": "Intel Core i7-12700K",
-      "descripcion": "Procesador Intel de alto rendimiento para gaming y creación de contenido.",
-      "precioOriginal": 4500,
-      "img": "https://example.com/i7-12700k.jpg",
+      "nombre": "AMD Ryzen 9 5900X",
+      "descripcion": "Procesador de 12 núcleos para multitarea avanzada y alto rendimiento en gaming.",
+      "precioOriginal": 7499,
+      "img": "https://example.com/ryzen9-5900x.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN9-5900X"
+    },
+    {
+      "nombre": "Intel Core i5-13600K",
+      "descripcion": "Procesador de 14 núcleos con un excelente rendimiento para gaming y productividad.",
+      "precioOriginal": 4299,
+      "img": "https://example.com/i5-13600k.jpg",
       "marca": "Intel",
-      "sku": "I7-12700K"
+      "sku": "I5-13600K"
+    },
+    {
+      "nombre": "Intel Core i7-13700K",
+      "descripcion": "Procesador de 16 núcleos para alto rendimiento en tareas exigentes y gaming.",
+      "precioOriginal": 7199,
+      "img": "https://example.com/i7-13700k.jpg",
+      "marca": "Intel",
+      "sku": "I7-13700K"
+    },
+    {
+      "nombre": "Intel Core i9-13900K",
+      "descripcion": "Procesador de 24 núcleos, ideal para gaming extremo y trabajo creativo.",
+      "precioOriginal": 13999,
+      "img": "https://example.com/i9-13900k.jpg",
+      "marca": "Intel",
+      "sku": "I9-13900K"
+    },
+    {
+      "nombre": "AMD Ryzen 7 7700X",
+      "descripcion": "Procesador de 8 núcleos y 16 hilos, excelente para videojuegos y software profesional.",
+      "precioOriginal": 5899,
+      "img": "https://example.com/ryzen7-7700x.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN7-7700X"
+    },
+    {
+      "nombre": "AMD Ryzen Threadripper 3970X",
+      "descripcion": "Procesador de 32 núcleos para estaciones de trabajo de alto rendimiento.",
+      "precioOriginal": 24999,
+      "img": "https://example.com/threadripper3970x.jpg",
+      "marca": "AMD",
+      "sku": "THREADRIPPER-3970X"
+    },
+    {
+      "nombre": "Intel Xeon W-2295",
+      "descripcion": "Procesador de 18 núcleos diseñado para estaciones de trabajo y entornos profesionales.",
+      "precioOriginal": 23999,
+      "img": "https://example.com/xeon-w2295.jpg",
+      "marca": "Intel",
+      "sku": "XEON-W2295"
     }
   ],
 
   "tarjetamadre": [
     {
-      "nombre": "AMD Ryzen 5 5500",
-      "descripcion": "Procesador de seis núcleos con gran rendimiento para gaming y trabajo.",
-      "precioOriginal": 1409,
-      "img": "https://example.com/ryzen5.jpg",
-      "marca": "AMD",
-      "sku": "RYZEN5-5500"
+      "nombre": "ASUS ROG STRIX B550-F Gaming",
+      "descripcion": "Tarjeta madre con soporte para AMD Ryzen y tecnología PCIe 4.0.",
+      "precioOriginal": 2999,
+      "img": "https://example.com/b550f.jpg",
+      "marca": "ASUS",
+      "sku": "B550-F"
     },
     {
-      "nombre": "AMD Ryzen 5 5600X",
-      "descripcion": "Procesador optimizado para gaming de alto rendimiento.",
-      "precioOriginal": 2619,
-      "img": "https://example.com/ryzen5600x.jpg",
-      "marca": "AMD",
-      "sku": "RYZEN5-5600X"
-    },
-    {
-      "nombre": "Intel Core i5-12400",
-      "descripcion": "Procesador Intel de gran rendimiento para tareas exigentes.",
-      "precioOriginal": 2200,
-      "img": "https://example.com/i5-12400.jpg",
-      "marca": "Intel",
-      "sku": "I5-12400"
-    },
-    {
-      "nombre": "Intel Core i7-12700K",
-      "descripcion": "Procesador Intel de alto rendimiento para gaming y creación de contenido.",
-      "precioOriginal": 4500,
-      "img": "https://example.com/i7-12700k.jpg",
-      "marca": "Intel",
-      "sku": "I7-12700K"
+      "nombre": "MSI MAG B660M Mortar WiFi",
+      "descripcion": "Tarjeta madre compacta para procesadores Intel de 12ª generación.",
+      "precioOriginal": 3499,
+      "img": "https://example.com/b660m.jpg",
+      "marca": "MSI",
+      "sku": "B660M"
     }
   ],
   "disipador": [
     {
-      "nombre": "AMD Ryzen 5 5500",
-      "descripcion": "Procesador de seis núcleos con gran rendimiento para gaming y trabajo.",
-      "precioOriginal": 1409,
-      "img": "https://example.com/ryzen5.jpg",
-      "marca": "AMD",
-      "sku": "RYZEN5-5500"
+      "nombre": "Cooler Master Hyper 212 RGB",
+      "descripcion": "Disipador de aire con iluminación RGB para alto rendimiento térmico.",
+      "precioOriginal": 899,
+      "img": "https://example.com/hyper212.jpg",
+      "marca": "Cooler Master",
+      "sku": "HYPER212"
     },
     {
-      "nombre": "AMD Ryzen 5 5600X",
-      "descripcion": "Procesador optimizado para gaming de alto rendimiento.",
-      "precioOriginal": 2619,
-      "img": "https://example.com/ryzen5600x.jpg",
-      "marca": "AMD",
-      "sku": "RYZEN5-5600X"
-    },
-    {
-      "nombre": "Intel Core i5-12400",
-      "descripcion": "Procesador Intel de gran rendimiento para tareas exigentes.",
-      "precioOriginal": 2200,
-      "img": "https://example.com/i5-12400.jpg",
-      "marca": "Intel",
-      "sku": "I5-12400"
-    },
-    {
-      "nombre": "Intel Core i7-12700K",
-      "descripcion": "Procesador Intel de alto rendimiento para gaming y creación de contenido.",
-      "precioOriginal": 4500,
-      "img": "https://example.com/i7-12700k.jpg",
-      "marca": "Intel",
-      "sku": "I7-12700K"
+      "nombre": "NZXT Kraken X53",
+      "descripcion": "Enfriamiento líquido AIO con pantalla personalizable y alto desempeño.",
+      "precioOriginal": 2899,
+      "img": "https://example.com/krakenx53.jpg",
+      "marca": "NZXT",
+      "sku": "KRAKEN-X53"
     }
   ],
   "memoriaram": [
     {
-      "nombre": "AMD Ryzen 5 5500",
-      "descripcion": "Procesador de seis núcleos con gran rendimiento para gaming y trabajo.",
-      "precioOriginal": 1409,
-      "img": "https://example.com/ryzen5.jpg",
+      "nombre": "Corsair Vengeance LPX 16GB DDR4 3200MHz",
+      "descripcion": "Memoria RAM de alto rendimiento para gaming y multitarea.",
+      "precioOriginal": 1349,
+      "img": "https://example.com/vengeancelpx.jpg",
+      "marca": "Corsair",
+      "sku": "VEN-LPX-16"
+    },
+    {
+      "nombre": "G.SKILL Trident Z RGB 16GB DDR4 3600MHz",
+      "descripcion": "RAM con diseño premium e iluminación RGB personalizable.",
+      "precioOriginal": 1899,
+      "img": "https://example.com/tridentz.jpg",
+      "marca": "G.SKILL",
+      "sku": "TRIDENT-Z"
+    }
+  ],
+  "tarjetagrafica": [
+    {
+      "nombre": "NVIDIA GeForce RTX 3060 Ti",
+      "descripcion": "Tarjeta gráfica con trazado de rayos y DLSS para gaming en alta resolución.",
+      "precioOriginal": 7999,
+      "img": "https://example.com/rtx3060ti.jpg",
+      "marca": "NVIDIA",
+      "sku": "RTX-3060TI"
+    },
+    {
+      "nombre": "NVIDIA GeForce RTX 4090",
+      "descripcion": "La GPU más avanzada de NVIDIA para creadores y gamers entusiastas.",
+      "precioOriginal": 42999,
+      "img": "https://example.com/rtx4090.jpg",
+      "marca": "NVIDIA",
+      "sku": "RTX-4090"
+    },
+    {
+      "nombre": "AMD Radeon RX 6700 XT",
+      "descripcion": "Tarjeta gráfica para gaming de alto rendimiento con 12 GB de memoria.",
+      "precioOriginal": 7299,
+      "img": "https://example.com/rx6700xt.jpg",
       "marca": "AMD",
-      "sku": "RYZEN5-5500"
+      "sku": "RX-6700XT"
     },
     {
-      "nombre": "AMD Ryzen 5 5600X",
-      "descripcion": "Procesador optimizado para gaming de alto rendimiento.",
-      "precioOriginal": 2619,
-      "img": "https://example.com/ryzen5600x.jpg",
+      "nombre": "AMD Radeon RX 7900 XTX",
+      "descripcion": "Tarjeta gráfica con trazado de rayos y excelente rendimiento para 4K.",
+      "precioOriginal": 19999,
+      "img": "https://example.com/rx7900xtx.jpg",
       "marca": "AMD",
-      "sku": "RYZEN5-5600X"
+      "sku": "RX-7900XTX"
     },
     {
-      "nombre": "Intel Core i5-12400",
-      "descripcion": "Procesador Intel de gran rendimiento para tareas exigentes.",
-      "precioOriginal": 2200,
-      "img": "https://example.com/i5-12400.jpg",
+      "nombre": "Intel Arc A770",
+      "descripcion": "La GPU de Intel para gaming de alto rendimiento y trazado de rayos.",
+      "precioOriginal": 10599,
+      "img": "https://example.com/arca770.jpg",
       "marca": "Intel",
-      "sku": "I5-12400"
+      "sku": "ARC-A770"
     },
     {
-      "nombre": "Intel Core i7-12700K",
-      "descripcion": "Procesador Intel de alto rendimiento para gaming y creación de contenido.",
-      "precioOriginal": 4500,
-      "img": "https://example.com/i7-12700k.jpg",
-      "marca": "Intel",
-      "sku": "I7-12700K"
+      "nombre": "ASUS ROG STRIX RTX 3070",
+      "descripcion": "Versión premium de la RTX 3070 con diseño ASUS ROG y refrigeración avanzada.",
+      "precioOriginal": 15999,
+      "img": "https://example.com/strix3070.jpg",
+      "marca": "ASUS",
+      "sku": "STRIX-3070"
+    },
+    {
+      "nombre": "MSI Gaming X Radeon RX 6650 XT",
+      "descripcion": "Tarjeta gráfica de AMD con diseño MSI para un rendimiento óptimo en 1080p.",
+      "precioOriginal": 6899,
+      "img": "https://example.com/msi6650xt.jpg",
+      "marca": "MSI",
+      "sku": "MSI-6650XT"
+    },
+    {
+      "nombre": "ZOTAC GAMING GeForce RTX 3080 Trinity",
+      "descripcion": "Tarjeta gráfica de ZOTAC con diseño compacto y rendimiento superior en 4K.",
+      "precioOriginal": 17999,
+      "img": "https://example.com/zotac3080.jpg",
+      "marca": "ZOTAC",
+      "sku": "ZOTAC-3080"
+    },
+    {
+      "nombre": "Gigabyte AORUS Radeon RX 6800 XT",
+      "descripcion": "GPU de alta gama de Gigabyte con refrigeración avanzada y rendimiento en 4K.",
+      "precioOriginal": 15999,
+      "img": "https://example.com/aorus6800xt.jpg",
+      "marca": "Gigabyte",
+      "sku": "AORUS-6800XT"
+    },
+    {
+      "nombre": "EVGA GeForce RTX 3070 FTW3 Ultra",
+      "descripcion": "Edición especial de EVGA con enfriamiento avanzado y alto rendimiento.",
+      "precioOriginal": 14999,
+      "img": "https://example.com/evga3070.jpg",
+      "marca": "EVGA",
+      "sku": "EVGA-3070FTW3"
     }
   ]
 }

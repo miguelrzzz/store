@@ -13,6 +13,7 @@ const ConfigurarPC = () => {
         { nombre: "Tarjetas Madre", key: "tarjetamadre" },
         { nombre: "Disipador", key: "disipador" },
         { nombre: "Ram", key: "memoriaram" },
+        { nombre: "Tarjeta grafica", key: "tarjetagrafica" },
     ];
 
     useEffect(() => {
