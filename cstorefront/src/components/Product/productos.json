@@ -1,0 +1,139 @@
+{
+  "procesador": [
+    {
+      "nombre": "AMD Ryzen 5 5500",
+      "descripcion": "Procesador de seis núcleos con gran rendimiento para gaming y trabajo.",
+      "precioOriginal": 1409,
+      "img": "https://example.com/ryzen5.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN5-5500"
+    },
+    {
+      "nombre": "AMD Ryzen 5 5600X",
+      "descripcion": "Procesador optimizado para gaming de alto rendimiento.",
+      "precioOriginal": 2619,
+      "img": "https://example.com/ryzen5600x.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN5-5600X"
+    },
+    {
+      "nombre": "Intel Core i5-12400",
+      "descripcion": "Procesador Intel de gran rendimiento para tareas exigentes.",
+      "precioOriginal": 2200,
+      "img": "https://example.com/i5-12400.jpg",
+      "marca": "Intel",
+      "sku": "I5-12400"
+    },
+    {
+      "nombre": "Intel Core i7-12700K",
+      "descripcion": "Procesador Intel de alto rendimiento para gaming y creación de contenido.",
+      "precioOriginal": 4500,
+      "img": "https://example.com/i7-12700k.jpg",
+      "marca": "Intel",
+      "sku": "I7-12700K"
+    }
+  ],
+
+  "tarjetamadre": [
+    {
+      "nombre": "AMD Ryzen 5 5500",
+      "descripcion": "Procesador de seis núcleos con gran rendimiento para gaming y trabajo.",
+      "precioOriginal": 1409,
+      "img": "https://example.com/ryzen5.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN5-5500"
+    },
+    {
+      "nombre": "AMD Ryzen 5 5600X",
+      "descripcion": "Procesador optimizado para gaming de alto rendimiento.",
+      "precioOriginal": 2619,
+      "img": "https://example.com/ryzen5600x.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN5-5600X"
+    },
+    {
+      "nombre": "Intel Core i5-12400",
+      "descripcion": "Procesador Intel de gran rendimiento para tareas exigentes.",
+      "precioOriginal": 2200,
+      "img": "https://example.com/i5-12400.jpg",
+      "marca": "Intel",
+      "sku": "I5-12400"
+    },
+    {
+      "nombre": "Intel Core i7-12700K",
+      "descripcion": "Procesador Intel de alto rendimiento para gaming y creación de contenido.",
+      "precioOriginal": 4500,
+      "img": "https://example.com/i7-12700k.jpg",
+      "marca": "Intel",
+      "sku": "I7-12700K"
+    }
+  ],
+  "disipador": [
+    {
+      "nombre": "AMD Ryzen 5 5500",
+      "descripcion": "Procesador de seis núcleos con gran rendimiento para gaming y trabajo.",
+      "precioOriginal": 1409,
+      "img": "https://example.com/ryzen5.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN5-5500"
+    },
+    {
+      "nombre": "AMD Ryzen 5 5600X",
+      "descripcion": "Procesador optimizado para gaming de alto rendimiento.",
+      "precioOriginal": 2619,
+      "img": "https://example.com/ryzen5600x.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN5-5600X"
+    },
+    {
+      "nombre": "Intel Core i5-12400",
+      "descripcion": "Procesador Intel de gran rendimiento para tareas exigentes.",
+      "precioOriginal": 2200,
+      "img": "https://example.com/i5-12400.jpg",
+      "marca": "Intel",
+      "sku": "I5-12400"
+    },
+    {
+      "nombre": "Intel Core i7-12700K",
+      "descripcion": "Procesador Intel de alto rendimiento para gaming y creación de contenido.",
+      "precioOriginal": 4500,
+      "img": "https://example.com/i7-12700k.jpg",
+      "marca": "Intel",
+      "sku": "I7-12700K"
+    }
+  ],
+  "memoriaram": [
+    {
+      "nombre": "AMD Ryzen 5 5500",
+      "descripcion": "Procesador de seis núcleos con gran rendimiento para gaming y trabajo.",
+      "precioOriginal": 1409,
+      "img": "https://example.com/ryzen5.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN5-5500"
+    },
+    {
+      "nombre": "AMD Ryzen 5 5600X",
+      "descripcion": "Procesador optimizado para gaming de alto rendimiento.",
+      "precioOriginal": 2619,
+      "img": "https://example.com/ryzen5600x.jpg",
+      "marca": "AMD",
+      "sku": "RYZEN5-5600X"
+    },
+    {
+      "nombre": "Intel Core i5-12400",
+      "descripcion": "Procesador Intel de gran rendimiento para tareas exigentes.",
+      "precioOriginal": 2200,
+      "img": "https://example.com/i5-12400.jpg",
+      "marca": "Intel",
+      "sku": "I5-12400"
+    },
+    {
+      "nombre": "Intel Core i7-12700K",
+      "descripcion": "Procesador Intel de alto rendimiento para gaming y creación de contenido.",
+      "precioOriginal": 4500,
+      "img": "https://example.com/i7-12700k.jpg",
+      "marca": "Intel",
+      "sku": "I7-12700K"
+    }
+  ]
+}
