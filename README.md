@@ -2,7 +2,7 @@
 **Presentación de Avance del Sistema utilizando MVC**
 
 #### Resumen del Progreso:
-Se ha realizado una  migración del proyecto, el cual inicialmente utilizaba únicamente JavaScript, HTML, Java, JSP y CSS, hacia una arquitectura más robusta y moderna. Ahora el proyecto emplea:
+Se ha realizado una  migración del proyecto, el cual inicialmente utilizaba únicamente JavaScript, HTML, Java, JSP y CSS. Ahora el proyecto emplea:
 
 - **Spring Boot** como framework de Java para el backend.
 - **React** como framework de JavaScript para el frontend.
