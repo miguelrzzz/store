@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <servlet>
+        <servlet-name>productoController</servlet-name>
+        <servlet-class>controller.productoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>userController</servlet-name>
+        <servlet-class>controller.userController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>carritoController</servlet-name>
+        <servlet-class>controller.carritoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>productoController</servlet-name>
+        <url-pattern>/productoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userController</servlet-name>
+        <url-pattern>/userController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>carritoController</servlet-name>
+        <url-pattern>/carritoController</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
