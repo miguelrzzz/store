@@ -44,7 +44,11 @@ public class usuarios implements Serializable {
     
     //  Extra
     private static ArrayList<usuarios> listaUsuarios = null;
-   
+   public usuarios(String nombre, boolean vigente){
+       this.nombre = nombre;
+       this.vigente = vigente;
+       this.CarritoPersonal = new carrito();
+   }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
     public usuarios(int userId, String pwd, String nombre, String correo, boolean vigente, Date fecha_nac) {
