@@ -10,6 +10,9 @@ package model;
  */
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class carrito {
 
@@ -19,7 +22,9 @@ public class carrito {
     private LocalDateTime fechaCreacion;
     private ArrayList<Producto> productos;
     private ArrayList<Producto> productosComprados;
-
+//    private 
+      private Map<Date, ArrayList<Producto>> historial = new HashMap<>();  
+    
     public carrito() {
         this.productos = new ArrayList<>();
         this.fechaCreacion = LocalDateTime.now();
@@ -48,27 +53,20 @@ public class carrito {
         productos.add(producto);
     }
 
-    public boolean agregaProducto(Producto producto) {
-        if (this.productos == null) {
-            this.productos = new ArrayList<>();
-        }
-
-        // Verificar si el producto ya está en el carrito
-        for (Producto p : productos) {
-            if (p.getSku().equals(producto.getSku())) {
-                p.setCantidadComprada(p.getCantidadComprada() + 1);
-            }
-        }
-        productos.add(producto);
-        return true;
-    }
-
     public double calcularTotal() {
         double subtotal = 0.0;
         for (Producto producto : productos) {
             subtotal += producto.getPrecioOriginal() * producto.getCantidadComprada();
         }
         return subtotal;
+    }
+
+    public Map<Date, ArrayList<Producto>> getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(Map<Date, ArrayList<Producto>> historial) {
+        this.historial = historial;
     }
 
     public void vaciarCarrito() {
@@ -85,6 +83,14 @@ public class carrito {
 
     public Long getTotal() {
         return total;
+    }
+
+    public ArrayList<Producto> getProductosComprados() {
+        return productosComprados;
+    }
+
+    public void setProductosComprados(ArrayList<Producto> productosComprados) {
+        this.productosComprados = productosComprados;
     }
 
     public void setTotal(Long total) {
@@ -120,6 +126,8 @@ public class carrito {
         for (Producto p : productos) {
             total += p.getCantidadComprada();
         }
+        total += productos.size();
+
         return total;
     }
 }

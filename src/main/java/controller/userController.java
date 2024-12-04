@@ -16,8 +16,8 @@ public class userController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        usuarios temporal = new usuarios("User Temp",true);
-        
+        usuarios temporal = new usuarios("User Temp", true);
+
         temporal.setCarritoPersonal(new carrito());
         HttpSession session = request.getSession();
         session.setAttribute("userTemp", temporal);
@@ -117,8 +117,13 @@ public class userController extends HttpServlet {
             session.setAttribute("loggedUser", cuenta);
 
             // Redirigir al index
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-            rd.forward(request, response);
+            if (!"admin@gmail.com".equals(usuario)) {
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.forward(request, response);
+            } else {
+                RequestDispatcher rd = request.getRequestDispatcher("/Pages/administracion/dash.jsp");
+                rd.forward(request, response);
+            }
         } else {
             // Manejar error de login
             request.setAttribute("error", "Credenciales inválidas. Intente de nuevo.");

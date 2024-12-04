@@ -4,6 +4,7 @@
     Author     : Miguel
 --%>
 
+<%@page import="model.carrito"%>
 <%@page import="model.usuarios"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
@@ -267,7 +268,44 @@
                             <a class="nav-link" href="./configurator/configurarpc.jsp">Personalizar</a>
                         </li>
                     </ul>
+
                     <div class="d-flex align-items-center">
+                        <%
+                            usuarios cuenta = new usuarios();
+                            if (session.getAttribute("loggedUser") != null) {
+                                cuenta = (usuarios) session.getAttribute("loggedUser");
+                                cuenta.setCarritoPersonal(new carrito());
+                            } else {
+                                if (session.getAttribute("userTemp") != null) {
+                                    cuenta = (usuarios) session.getAttribute("userTemp");
+                                } else {
+                                    cuenta = new usuarios("Usuario temporal", true);
+                                    session.setAttribute("userTemp", cuenta);
+    //                            cuenta = (usuarios) 
+                                }
+                            }
+                            if (session != null && session.getAttribute("loggedUser") != null) {
+                        %>
+                        <a href="./auth/account.jsp" class="nav-link me-3">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <%
+                        } else {
+                        %>
+                        <a href="./auth/login.jsp" class="nav-link me-3">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <%
+                            }
+                        %>
+                        <%
+                            int art = cuenta.getCarritoPersonal() != null ? cuenta.getCarritoPersonal().getCantidadArticulos() : 0;
+                        %>
+                        <a href="./cart/carrito.jsp" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cart-count" class="badge"><%= art%></span>
+                        </a>
+
                     </div>
                 </div>
             </div>

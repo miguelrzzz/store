@@ -1,8 +1,11 @@
 <%-- 
-    Document   : logitech
-    Created on : 1 dic 2024, 3:16:59 p.m.
+    Document   : lenovo
+    Created on : 2 dic 2024, 1:18:25 a.m.
     Author     : Miguel
 --%>
+
+<%@page import="model.carrito"%>
+<%@page import="model.usuarios"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -265,7 +268,44 @@
                             <a class="nav-link" href="./configurator/configurarpc.jsp">Personalizar</a>
                         </li>
                     </ul>
+
                     <div class="d-flex align-items-center">
+                        <%
+                            usuarios cuenta = new usuarios();
+                            if (session.getAttribute("loggedUser") != null) {
+                                cuenta = (usuarios) session.getAttribute("loggedUser");
+                                cuenta.setCarritoPersonal(new carrito());
+                            } else {
+                                if (session.getAttribute("userTemp") != null) {
+                                    cuenta = (usuarios) session.getAttribute("userTemp");
+                                } else {
+                                    cuenta = new usuarios("Usuario temporal", true);
+                                    session.setAttribute("userTemp", cuenta);
+    //                            cuenta = (usuarios) 
+                                }
+                            }
+                            if (session != null && session.getAttribute("loggedUser") != null) {
+                        %>
+                        <a href="./auth/account.jsp" class="nav-link me-3">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <%
+                        } else {
+                        %>
+                        <a href="./auth/login.jsp" class="nav-link me-3">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <%
+                            }
+                        %>
+                        <%
+                            int art = cuenta.getCarritoPersonal() != null ? cuenta.getCarritoPersonal().getCantidadArticulos() : 0;
+                        %>
+                        <a href="./cart/carrito.jsp" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cart-count" class="badge"><%= art%></span>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -290,12 +330,18 @@
                 <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <%
-                                          ; // Contador para marcar l                                                    for (Map.Entry<                            ry : stocks.entrySet()) {
-                                String categoria = entr                                        ArrayList<Producto> productos = entry.ge                   // Dividir productos por slide
-                               int productosPorSlide = 4;
-                                int totalProductos = productos.si                                  int totalSlides = (int) Math.ceil((double)                                ;
+                            int slideIndex = 0; // Contador para marcar la primera slide como activa
+                            for (Map.Entry<String, ArrayList<Producto>> entry : stocks.entrySet()) {
+                                String categoria = entry.getKey();
+                                ArrayList<Producto> productos = entry.getValue();
 
-                                for (int slide = 0; slide < totalSlides                                 %>
+                                // Dividir productos por slide
+                                int productosPorSlide = 4;
+                                int totalProductos = productos.size();
+                                int totalSlides = (int) Math.ceil((double) totalProductos / productosPorSlide);
+
+                                for (int slide = 0; slide < totalSlides; slide++) {
+                        %>
                         <div class="carousel-item <%= slideIndex == 0 ? "active" : ""%>">
                             <div class="row">
                                 <%
@@ -375,8 +421,8 @@
                                 <h5 class="card-title"><%= p.getNombre()%></h5>
                                 <p class="card-text"><%= p.getDescripcion()%></p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 mb-0">$<%= String                                        riginal())%></span>
-                                    <button class="btn btn-custom add-to-cart" data-id="<%= p.getSku() %>" onclick="addToCart('<%= p.getSku() %>')">Añadir</button>
+                                    <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
+                                    <button class="btn btn-custom add-to-cart" data-id="<%= p.getSku()%>" onclick="addToCart('<%= p.getSku()%>')">Añadir</button>
                                 </div>
                             </div>
                         </div>
@@ -391,6 +437,6 @@
         </section>
         <!-- Bootstrap JS and dependencies -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="./cart.js"></script>
+        <script src="cart.js"></script>
     </body>
 </html>

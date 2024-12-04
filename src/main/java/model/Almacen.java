@@ -14,8 +14,6 @@ import java.util.Map;
  */
 public class Almacen {
 
-//    private ArrayList<Producto> stock;
-//    Nueva forma
     private Map<String, ArrayList<Producto>> stocks = new HashMap<>();
     private String categoria;
     private long valorTotal;

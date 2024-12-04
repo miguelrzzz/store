@@ -427,29 +427,29 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="./cart.js" ></script>
         <script>
-                                        document.addEventListener('DOMContentLoaded', function () {
-                                            const categoryButtons = document.querySelectorAll('.btn-filter');
-                                            const productCards = document.querySelectorAll('#productContainer .product-card');
+                document.addEventListener('DOMContentLoaded', function () {
+                    const categoryButtons = document.querySelectorAll('.btn-filter');
+                    const productCards = document.querySelectorAll('#productContainer .product-card');
 
 
-                                            categoryButtons.forEach(button => {
-                                                button.addEventListener('click', function () {
-                                                    const category = this.getAttribute('data-category');
+                    categoryButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            const category = this.getAttribute('data-category');
 
-                                                    // Remover clase activa de todos los botones
-                                                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                                                    this.classList.add('active');
+                            // Remover clase activa de todos los botones
+                            categoryButtons.forEach(btn => btn.classList.remove('active'));
+                            this.classList.add('active');
 
-                                                    productCards.forEach(card => {
-                                                        if (category === 'all' || card.getAttribute('data-category') === category) {
-                                                            card.style.display = 'block';
-                                                        } else {
-                                                            card.style.display = 'none';
-                                                        }
-                                                    });
-                                                });
-                                            });
-                                        });
+                            productCards.forEach(card => {
+                                if (category === 'all' || card.getAttribute('data-category') === category) {
+                                    card.style.display = 'block';
+                                } else {
+                                    card.style.display = 'none';
+                                }
+                            });
+                        });
+                    });
+                });
         </script>
     </body>
 </html>

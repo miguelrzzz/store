@@ -4,6 +4,8 @@
     Author     : Miguel
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Producto"%>
 <%@page import="model.usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -92,27 +94,15 @@
             <div class="card-header">
                 Información del Usuario
             </div>
-
-            <% if (cuenta.getFotoPerfil() != null) {%>
-            <div class="profile-pic">
-                <input type="file" id="profileImage" name="profileImage" accept="image/*" style="display: none;">
-                <label for="profileImage">
-                    <img src= "<%=cuenta.getFotoPerfil()%>"  id="previewImage">
-                </label>
-            </div>
-            <% } else {%>
-            <div class="profile-pic">
-                <%=nombre.charAt(0)%>
-            </div>
-            <%} %>
-
-
             <!-- Información básica -->
             <div class="account-option">
-                <span>Nombre(s)</span>
+                <span>Pedios</span>
+                
+                <% ArrayList<Producto> comprados = cuenta.getCarritoPersonal().getProductosComprados();
+                        for(Producto p :  comprados){%>
                 <span>
-                    <%= cuenta.getNombre()%>
                 </span>
+                <% %>
             </div>
             <div class="account-option">
                 <span>Primer Apellido </span>

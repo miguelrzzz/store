@@ -150,7 +150,7 @@
                                             <del class="text-secondary">$1,927.00</del>
                                             <div class="fs-5 fw-bold text-custom-primary">$1,409.00</div>
                                         </div>
-                                        <button class="btn btn-custom-outline btn-sm">Agregar</button>
+                                        <button class="btn btn-custom-outline btn-sm"  onclick="addToCart('<%= p.getSku()%>')">Agregar</button>
                                     </div>
                                     <small class="text-secondary"><%=p.getCantidadDisponible()%></small>
                                 </div>
@@ -180,7 +180,7 @@
                                             <del class="text-secondary">$1,927.00</del>
                                             <div class="fs-5 fw-bold text-custom-primary">$1,409.00</div>
                                         </div>
-                                        <button class="btn btn-custom-outline btn-sm">Agregar</button>
+                                        <button class="btn btn-custom-outline btn-sm"  onclick="addToCart('<%= p.getSku()%>')">Agregar</button>
                                     </div>
                                     <small class="text-secondary"><%=p.getCantidadDisponible()%></small>
                                 </div>
@@ -223,6 +223,31 @@
             }
         }
 
+        function addToCart(productId) {
+            console.log("Enviando solicitud para agregar el producto:", productId);
+
+            fetch('http://localhost:8082/Store/carritoController', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'action=add&productId=' + productId
+            })
+                    .then(response => {
+                        console.log("Respuesta del servidor:", response);
+                        return response.text().then(text => {
+                            if (response.ok) {
+                                alert('Producto añadido al carrito exitosamente');
+                            } else {
+                                throw new Error(text || 'Error en la solicitud');
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error: ' + error.message);
+                    });
+        }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
