@@ -3,6 +3,9 @@
     Created on : 14 nov 2024, 2:09:59 a.m.
     Author     : Miguel
 --%>
+
+<%@page import="model.usuarios"%>
+<%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="model.Producto"%>
@@ -269,26 +272,16 @@
                 </div>
             </div>
         </nav>
-
         <%
-            Almacen tarjetasGraficas = new Almacen();
-            Almacen mouses = new Almacen();
-            Almacen laptops = new Almacen();
-            Almacen monitores = new Almacen();
-
-            tarjetasGraficas.setStock(Producto.inicialiarTarjetasGraficas());
-            mouses.setStock(Producto.inicializarMouse());
-            laptops.setStock(Producto.inicialiazarLaptops());
-            monitores.setStock(Producto.inicializarMonitores());
-
-            // Crear una lista unificada de productos
-            List<Producto> productosAll = new ArrayList<>();
-            productosAll.addAll(tarjetasGraficas.getStock());
-            productosAll.addAll(mouses.getStock());
-            productosAll.addAll(laptops.getStock());
-            productosAll.addAll(monitores.getStock());
+            Almacen tienda = (Almacen) session.getAttribute("tienda");
+            if (tienda == null) {
+                // Redirigir al servlet de inicialización
+                response.sendRedirect("/Store/almacenController");
+                return;
+            }
+//            tienda.setStocks(Almacen.inicializarStock());
+            Map<String, ArrayList<Producto>> stocks = tienda.getStocks();
         %>
-
         <section class="py-5">
             <div class="container">
                 <div class="row">
@@ -296,26 +289,29 @@
                         <h2 class="text-left mb-4">Más vendidos</h2>
                     </div>
                 </div>
-
                 <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <%
-                            // Configuración del carrusel
-                            int productosPorSlide = 4;
-                            int totalProductos = productosAll.size();
-                            int totalSlides = (int) Math.ceil((double) totalProductos / productosPorSlide);
+                            int slideIndex = 0; // Contador para marcar la primera slide como activa
+                            for (Map.Entry<String, ArrayList<Producto>> entry : stocks.entrySet()) {
+                                String categoria = entry.getKey();
+                                ArrayList<Producto> productos = entry.getValue();
 
-                            // Generar los slides
-                            for (int slide = 0; slide < totalSlides; slide++) {
+                                // Dividir productos por slide
+                                int productosPorSlide = 4;
+                                int totalProductos = productos.size();
+                                int totalSlides = (int) Math.ceil((double) totalProductos / productosPorSlide);
+
+                                for (int slide = 0; slide < totalSlides; slide++) {
                         %>
-                        <div class="carousel-item <%= slide == 0 ? "active" : ""%>">
+                        <div class="carousel-item <%= slideIndex == 0 ? "active" : ""%>">
                             <div class="row">
                                 <%
                                     int startIndex = slide * productosPorSlide;
                                     int endIndex = Math.min(startIndex + productosPorSlide, totalProductos);
 
                                     for (int i = startIndex; i < endIndex; i++) {
-                                        Producto p = productosAll.get(i);
+                                        Producto p = productos.get(i);
                                 %>
                                 <div class="col-12 col-md-6 col-lg-3 product-card">
                                     <div class="card">
@@ -333,20 +329,24 @@
                                 <% } %>
                             </div>
                         </div>
-                        <% } %>
+                        <%
+                                    slideIndex++; // Incrementar el contador para el índice de los slides
+                                } // Fin del loop por slides
+                            } // Fin del loop por categorías
+                        %>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
                     </div>
-                    <!-- Controles del carrusel -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
                 </div>
             </div>
         </section>
+
         <section class="py-5">
             <div class="container">
                 <div class="row filter-section">
@@ -365,103 +365,40 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="row " id="productContainer">
-                    <%for (Producto p : laptops.getStock()) {%>
-                    <div class="col-6 col-md-6 col-lg-3 mb-4 product-card" data-category="laptops">
-                        <div class="card h-100">
-                            <img src="https://lh3.googleusercontent.com/d/<%= p.getImg()%>" class="card-img-top" alt="<%= p.getNombre()%>">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= p.getNombre()%></h5>
-                                <p class="card-text"><%= p.getDescripcion()%></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
-                                    <button class="btn btn-custom add-to-cart">Añadir</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>   
-                    <% }%>
-                </div>
-                <div class="row ">
-                    <% for (Producto p : monitores.getStock()) {%>
-                    <div class="col-6 col-md-6 col-lg-3 mb-4 product-card" data-category="monitores">
-                        <div class="card h-100">
-                            <img src="https://lh3.googleusercontent.com/d/<%= p.getImg()%>" class="card-img-top" alt="<%= p.getNombre()%>">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= p.getNombre()%></h5>
-                                <p class="card-text"><%= p.getDescripcion()%></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
-                                    <button class="btn btn-custom add-to-cart">Añadir</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>            
-                    <%}%>
-                </div>
-                <div class="row ">
-                    <% for (Producto p : tarjetasGraficas.getStock()) {%>
-                    <div class="col-6 col-md-6 col-lg-3 mb-4 product-card" data-category="monitores">
-                        <div class="card h-100">
-                            <img src="https://lh3.googleusercontent.com/d/<%= p.getImg()%>" class="card-img-top" alt="<%= p.getNombre()%>">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= p.getNombre()%></h5>
-                                <p class="card-text"><%= p.getDescripcion()%></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
-                                    <button class="btn btn-custom add-to-cart">Añadir</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>            
-                    <%}%>
+                    <%
+                        for (Map.Entry<String, ArrayList<Producto>> entry : tienda.getStocks().entrySet()) {
+                            String categoria = entry.getKey();
+                            ArrayList<Producto> productos = entry.getValue();
 
-                    <div class="row ">
-                        <% for (Producto p : tarjetasGraficas.getStock()) {%>
-                        <div class="col-6 col-md-6 col-lg-3 mb-4 product-card" data-category="monitores">
-                            <div class="card h-100">
-                                <img src="https://lh3.googleusercontent.com/d/<%= p.getImg()%>" class="card-img-top" alt="<%= p.getNombre()%>">
-                                <div class="card-body">
-                                    <h5 class="card-title"><%= p.getNombre()%></h5>
-                                    <p class="card-text"><%= p.getDescripcion()%></p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
-                                        <button class="btn btn-custom add-to-cart">Añadir</button>
-                                    </div>
+                            for (Producto p : productos) {
+
+                    %>
+                    <div class="col-6 col-md-6 col-lg-3 mb-4 product-card" data-category="<%= categoria%>">
+                        <div class="card h-100">
+                            <img src="https://lh3.googleusercontent.com/d/<%= p.getImg()%>" class="card-img-top" alt="<%= p.getNombre()%>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= p.getNombre()%></h5>
+                                <p class="card-text"><%= p.getDescripcion()%></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
+                                    <button class="btn btn-custom add-to-cart" data-id="<%= p.getSku()%>" onclick="addToCart('<%= p.getSku()%>')">Añadir</button>
                                 </div>
                             </div>
-                        </div>            
-                        <%}%>
+                        </div>
                     </div>
-                </div>
-        </section>
+                    <%
 
+                            }
+                        }
+                    %>
+                </div>
+            </div>
+        </section>
         <!-- Bootstrap JS and dependencies -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const categoryButtons = document.querySelectorAll('.btn-filter');
-                const productCards = document.querySelectorAll('#productContainer .product-card');
-
-
-                categoryButtons.forEach(button => {
-                    button.addEventListener('click', function () {
-                        const category = this.getAttribute('data-category');
-
-                        // Remover clase activa de todos los botones
-                        categoryButtons.forEach(btn => btn.classList.remove('active'));
-                        this.classList.add('active');
-
-                        productCards.forEach(card => {
-                            if (category === 'all' || card.getAttribute('data-category') === category) {
-                                card.style.display = 'block';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                });
-            });
-        </script>
+        <script src="cart.js"></script>
     </body>
 </html>

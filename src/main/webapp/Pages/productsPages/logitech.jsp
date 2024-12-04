@@ -271,9 +271,13 @@
             </div>
         </nav>
         <%
-            // Inicializar el mapa desde Almacen
-            Almacen tienda = new Almacen();
-            tienda.setStocks(Almacen.inicializarStock());
+            Almacen tienda = (Almacen) session.getAttribute("tienda");
+            if (tienda == null) {
+                // Redirigir al servlet de inicialización
+                response.sendRedirect("/Store/almacenController");
+                return;
+            }
+//            tienda.setStocks(Almacen.inicializarStock());
             Map<String, ArrayList<Producto>> stocks = tienda.getStocks();
         %>
         <section class="py-5">
@@ -286,18 +290,12 @@
                 <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <%
-                            int slideIndex = 0; // Contador para marcar la primera slide como activa
-                            for (Map.Entry<String, ArrayList<Producto>> entry : stocks.entrySet()) {
-                                String categoria = entry.getKey();
-                                ArrayList<Producto> productos = entry.getValue();
+                                          ; // Contador para marcar l                                                    for (Map.Entry<                            ry : stocks.entrySet()) {
+                                String categoria = entr                                        ArrayList<Producto> productos = entry.ge                   // Dividir productos por slide
+                               int productosPorSlide = 4;
+                                int totalProductos = productos.si                                  int totalSlides = (int) Math.ceil((double)                                ;
 
-                                // Dividir productos por slide
-                                int productosPorSlide = 4;
-                                int totalProductos = productos.size();
-                                int totalSlides = (int) Math.ceil((double) totalProductos / productosPorSlide);
-
-                                for (int slide = 0; slide < totalSlides; slide++) {
-                        %>
+                                for (int slide = 0; slide < totalSlides                                 %>
                         <div class="carousel-item <%= slideIndex == 0 ? "active" : ""%>">
                             <div class="row">
                                 <%
@@ -377,7 +375,7 @@
                                 <h5 class="card-title"><%= p.getNombre()%></h5>
                                 <p class="card-text"><%= p.getDescripcion()%></p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
+                                    <span class="h5 mb-0">$<%= String                                        riginal())%></span>
                                     <button class="btn btn-custom add-to-cart" data-id="<%= p.getSku() %>" onclick="addToCart('<%= p.getSku() %>')">Añadir</button>
                                 </div>
                             </div>
@@ -393,51 +391,6 @@
         </section>
         <!-- Bootstrap JS and dependencies -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const categoryButtons = document.querySelectorAll('.btn-filter');
-                const productCards = document.querySelectorAll('#productContainer .product-card');
-                categoryButtons.forEach(button => {
-                    button.addEventListener('click', function () {
-                        const category = this.getAttribute('data-category');
-                        // Remover clase activa de todos los botones
-                        categoryButtons.forEach(btn => btn.classList.remove('active'));
-                        this.classList.add('active');
-                        productCards.forEach(card => {
-                            if (category === 'all' || card.getAttribute('data-category') === category) {
-                                card.style.display = 'block';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                });
-            });
-
-            function addToCart(productId) {
-                console.log("Enviando solicitud para agregar el producto:", productId);
-
-                fetch('/Store/carritoController', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `action=add&productId=${productId}`,
-                })
-                        .then(response => {
-                            console.log("Respuesta del servidor:", response);
-                            if (response.ok) {
-                                alert('Producto añadido al carrito');
-                            } else {
-                                alert('Error al añadir el producto');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error al procesar la solicitud:', error);
-                            alert('Error al procesar la solicitud');
-                        });
-            }
-
-        </script>
+        <script src="./cart.js"></script>
     </body>
 </html>

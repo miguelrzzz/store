@@ -39,7 +39,8 @@ public class usuarios implements Serializable {
     static private int contadorID = 0;
     
     private carrito CarritoPersonal;
-    private ArrayList<Cuenta> tarjetasAgregadas;
+    private Cuenta cuentaBancaria1;
+    private Cuenta cuentaBancaria2;
     
     
     //  Extra
@@ -198,6 +199,22 @@ public class usuarios implements Serializable {
         return listaUsuarios;
     }
 
+    public Cuenta getCuentaBancaria1() {
+        return cuentaBancaria1;
+    }
+
+    public void setCuentaBancaria1(Cuenta cuentaBancaria1) {
+        this.cuentaBancaria1 = cuentaBancaria1;
+    }
+
+    public Cuenta getCuentaBancaria2() {
+        return cuentaBancaria2;
+    }
+
+    public void setCuentaBancaria2(Cuenta cuentaBancaria2) {
+        this.cuentaBancaria2 = cuentaBancaria2;
+    }
+
     static public ArrayList<usuarios> ActualizaDatos(usuarios act, int id) {
         ArrayList<usuarios> lista = inicializarUsuarios();
         for (usuarios user : lista) {
@@ -228,6 +245,10 @@ public class usuarios implements Serializable {
         listado.add(new usuarios(contadorID++,"123","Angel", "angel.ramirez83@gmail.com", true,formateoFecha("18/09/2004")));
         listado.add(new usuarios(contadorID++,"001","Goyito", "goyito@gmail.com", true,formateoFecha("07/12/1989")));
         listado.add(new usuarios(contadorID++,"admin","admin", "admin@gmail.com", true,formateoFecha("18/09/2004")));        
+        
+        for(usuarios p : listado){
+            p.setCuentaBancaria1(new Cuenta("5488435328330491", 50000, p.getNombre() ));
+        }
         return listado;
     }
 

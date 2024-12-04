@@ -12,6 +12,10 @@
         <servlet-name>carritoController</servlet-name>
         <servlet-class>controller.carritoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>almacenController</servlet-name>
+        <servlet-class>controller.almacenController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>productoController</servlet-name>
         <url-pattern>/productoController</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>carritoController</servlet-name>
         <url-pattern>/carritoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>almacenController</servlet-name>
+        <url-pattern>/almacenController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

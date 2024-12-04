@@ -4,6 +4,7 @@
     Author     : Miguel
 --%>
 
+<%@page import="model.usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +20,18 @@
 
     <body>
         <!-- =============== Navigation ================ -->
-        <div class="container">
+        <%
+            usuarios cuenta = (usuarios) session.getAttribute("loggedUser");
+            if (cuenta != null) {
+                if (cuenta.getCorreo().equals("admin@gmail.com")) {
+        %>
+        <div class="container-custom">
             <div class="navigation">
                 <ul>
                     <li>
                         <a href="#">
                             <span class="icon">
-                                <ion-icon name="logo-apple"></ion-icon>
+                                <ion-icon name="hardware-chip-outline"></ion-icon>
                             </span>
                             <span class="title">CompuStore-Admin</span>
                         </a>
@@ -243,6 +249,8 @@
                 </div>
             </div>
         </div>
+        <% }
+            }%>
 
         <!-- =========== Scripts =========  -->
         <script src="./main.js"></script>

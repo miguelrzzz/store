@@ -9,21 +9,27 @@ package model;
  * @author Miguel
  */
 public class Cuenta {
-    private long numeroCuenta;
+    private String numeroCuenta;
     private double saldo;
     private String titular;
 
     // Constructor
-    public Cuenta(long numeroCuenta, double saldoInicial, String titular) {
+    public Cuenta(String numeroCuenta, long saldoInicial, String titular) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldoInicial;
         this.titular = titular;
     }
 
     // Métodos getters y setters
-    public long getNumeroCuenta() {
+
+    public String getNumeroCuenta() {
         return numeroCuenta;
     }
+
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    }
+
 
     public double getSaldo() {
         return saldo;

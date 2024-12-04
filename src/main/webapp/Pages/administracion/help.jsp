@@ -1,22 +1,24 @@
 <%-- 
-    Document   : usuarios
-    Created on : 2 dic 2024, 11:51:49 p.m.
+    Document   : help
+    Created on : 3 dic 2024, 2:09:43 a.m.
     Author     : Miguel
 --%>
+
 <%@page import="model.usuarios"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Map"%>
 <%@page import="model.Producto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Almacen"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gestion de usuarios</title>
+        <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
         <!-- ======= Styles ====== -->
         <link rel="stylesheet" href="./style.css">
     </head>
@@ -32,7 +34,7 @@
             <div class="navigation">
                 <ul>
                     <li>
-                        <a href="./dash.jsp">
+                        <a href="#">
                             <span class="icon">
                                 <ion-icon name="hardware-chip-outline"></ion-icon>
                             </span>
@@ -41,7 +43,7 @@
                     </li>
 
                     <li>
-                        <a href="./dash.jsp">
+                        <a href="#">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
@@ -124,49 +126,20 @@
                     </div>
                 </div>
 
-                <!-- ================ Detalles de los productos ================= -->
-                <div class="details">
-                    <div class="recentOrders">
-                        <div class="cardHeader">
-                            <h2>Almacen</h2>
-                            <a href="#" class="btn">View All</a>
-                        </div>
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>ID</td>
-                                    <td>Nombre</td>
-                                    <td>Apellido</td>
-                                    <td>Segundo Apellido</td>
-                                    <td>Contacto</td>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <%
-                                    ArrayList<usuarios> listaUsuarios = usuarios.consulta();
-
-                                    for (usuarios u : listaUsuarios) {
-                                %>
-                                <tr>
-                                    <td><%=u.getUserId()%> </td>
-                                    <td><%=u.getNombre()%></td>
-                                    <td><%=u.getApellido1()%> </td>
-                                    <td><%=u.getApellido2()%> </td>
-                                    <td><%=u.getCorreo()%> </td>
-                                </tr>
-                                <% }%>
-                            </tbody>
-                        </table>
-                    </div>
-
+                <div>
+                    <p>Si no funcioona:</p>
+                    <ul>
+                        <li>Opcion1 : Recargar la pagina</li>
+                        <li>Opcion2 : Reiniciar la computadora/celular/tablet</li>
+                        <li>Opcion3 : Repita opcion 1 y 2</li>
+                        <li>Opcion4: Cambie de internet</li>
+                        <li>Opcion5: Reze</li>
+                    </ul>
                 </div>
             </div>
         </div>
         <% }
             }%>
-
 
         <!-- =========== Scripts =========  -->
         <script src="./main.js"></script>

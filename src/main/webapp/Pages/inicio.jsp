@@ -4,6 +4,7 @@
     Author     : Miguel
 --%>
 
+<%@page import="model.carrito"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Producto"%>
@@ -28,19 +29,20 @@
                 --light-gray: #f5f5f5;
                 --white: #ffffff;
             }
-            h5{
+            h5 {
                 font-size: 20px;
             }
-            a,p{
+            a,
+            p {
                 font-size: 16px;
             }
 
             .navbar-custom {
                 background-color: var(--primary-black);
-
             }
 
-            .nav-link, .navbar-brand {
+            .nav-link,
+            .navbar-brand {
                 color: var(--white);
                 font-size: 14px;
             }
@@ -52,11 +54,11 @@
             .card:hover {
                 transform: translateY(-5px);
                 transition: transform 0.3s ease;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
 
             .hero-section {
-                background: linear-gradient(to right, #111827,#000000);
+                background: linear-gradient(to right, #111827, #000000);
                 background-size: cover;
                 background-position: center;
                 height: 400px;
@@ -66,7 +68,6 @@
                 background-color: var(--primary-black);
                 color: var(--white);
                 border: 1px solid var(--primary-black);
-
             }
 
             .btn-custom:hover {
@@ -76,7 +77,7 @@
             }
 
             .badge {
-                background-color: var(--secondary-gray)
+                background-color: var(--secondary-gray);
             }
 
             .custom-toggler {
@@ -105,7 +106,7 @@
 
             .text-custom-purple {
                 font-size: 1.5rem;
-                color: var(--primary-black)
+                color: var(--primary-black);
             }
 
             .bg-light {
@@ -116,15 +117,13 @@
                 border: 1px solid var(--light-gray);
             }
 
-            .card-title{
+            .card-title {
                 font-size: 16px;
             }
 
-            .card-text{
-                font-size:16px;
+            .card-text {
+                font-size: 16px;
             }
-
-
 
             footer {
                 background-color: var(--primary-black);
@@ -135,26 +134,26 @@
                 text-decoration: none;
             }
 
-            .card-img-top{
+            .card-img-top {
                 margin-left: 100px;
                 margin-top: 20px;
                 width: 120px;
-                height:max;
+                height: max;
             }
-            .carousel-item{
+            .carousel-item {
             }
-            
-            
-            .carousel-control-next, .carousel-control-prev{
+
+            .carousel-control-next,
+            .carousel-control-prev {
                 top: 50%;
                 transform: translateY(-50%);
                 width: 5%;
             }
-            .carousel-control-prev{
+            .carousel-control-prev {
                 left: -50px;
                 color: black;
             }
-            .carousel-control-next{
+            .carousel-control-next {
                 right: -50px;
             }
             .carousel-control-prev-icon,
@@ -179,7 +178,7 @@
 
                 .navbar-nav {
                     flex-direction: column;
-                    align-items:flex-end;
+                    align-items: flex-end;
                     gap: 0.5rem;
                 }
 
@@ -204,7 +203,8 @@
                     text-align: center;
                     margin-bottom: 1rem;
                 }
-                .bg-light p,h4 {
+                .bg-light p,
+                h4 {
                     font-size: 16px;
                 }
 
@@ -212,7 +212,7 @@
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-around;
-                    height:auto;
+                    height: auto;
                 }
 
                 .bg-light .row div {
@@ -221,10 +221,11 @@
                     margin-bottom: 1rem;
                 }
 
-                .bg-light .row div i{
+                .bg-light .row div i {
                     font-size: 20px;
                 }
             }
+
         </style>
     </head>
 
@@ -254,9 +255,20 @@
                 </ul>
                 <div class="d-flex align-items-center">
                     <%
-                        if (session != null && session.getAttribute("loggedUser") != null) {
-//                              usuarios cuenta = (usuarios) session.getAttribute("loggedUser");
-//                              if(cuenta != null){
+                        usuarios cuenta = new usuarios();
+                        if (session.getAttribute("loggedUser") != null) {
+                            cuenta = (usuarios) session.getAttribute("loggedUser");
+                            cuenta.setCarritoPersonal(new carrito());
+                        } else {
+                            if (session.getAttribute("userTemp") != null) {
+                                cuenta = (usuarios) session.getAttribute("userTemp");
+                            } else {
+                                cuenta = new usuarios("Usuario temporal", true);
+                                session.setAttribute("userTemp", cuenta);
+//                            cuenta = (usuarios) 
+                            }
+                        }
+                            if (session != null && session.getAttribute("loggedUser") != null) {
                     %>
                     <a href="./auth/account.jsp" class="nav-link me-3">
                         <i class="fas fa-user"></i>
@@ -270,10 +282,14 @@
                     <%
                         }
                     %>
+                    <%
+                        int art = cuenta.getCarritoPersonal() != null ? cuenta.getCarritoPersonal().getCantidadArticulos() : 0;
+                    %>
                     <a href="./cart/carrito.jsp" class="nav-link">
                         <i class="fas fa-shopping-cart"></i>
-                        <span class="badge">0</span>
+                        <span id="cart-count" class="badge"><%= art%></span>
                     </a>
+
                 </div>
             </div>
         </div>
@@ -385,9 +401,13 @@
         </div>
     </section>
     <%
-        // Inicializar el mapa desde Almacen
-        Almacen tienda = new Almacen();
-        tienda.setStocks(Almacen.inicializarStock());
+        Almacen tienda = (Almacen) session.getAttribute("tienda");
+        if (tienda == null) {
+            // Redirigir al servlet de inicialización
+            response.sendRedirect("/Store/almacenController");
+            return;
+        }
+//            tienda.setStocks(Almacen.inicializarStock());
         Map<String, ArrayList<Producto>> stocks = tienda.getStocks();
     %>
 
@@ -429,7 +449,7 @@
                                         <p class="card-text"><%= p.getDescripcion()%></p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
-                                            <button class="btn btn-custom add-to-cart">Añadir</button>
+                                            <button class="btn btn-custom add-to-cart" data-id="<%= p.getSku()%>" onclick="addToCart('<%= p.getSku()%>')">Añadir</button>
                                         </div>
                                     </div>
                                 </div>
@@ -442,7 +462,7 @@
                                 slideIndex++; // Incrementar el contador para el índice de los slides
                             } // Fin del loop por slides
                         } // Fin del loop por categorías
-                    %>
+%>
                     <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Anterior</span>
@@ -483,10 +503,40 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js">
-        $('.carousel').carousel({
-            interval: 3
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function addToCart(productId) {
+            console.log("Enviando solicitud para agregar el producto:", productId);
 
+            fetch('http://localhost:8082/Store/carritoController', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'action=add&productId=' + productId
+            })
+                    .then(response => {
+                        console.log("Respuesta del servidor:", response);
+                        return response.text().then(text => {
+                            if (response.ok) {
+//                                        updateCartCount(text);
+//                                        cartCount
+                                const cartCountElement = document.getElementById('cart-count');
+                                cartCountElement.textContent = text; // Actualizar el badge
+                                alert('Producto añadido al carrito exitosamente');
+                            } else {
+                                throw new Error(text || 'Error en la solicitud');
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error: ' + error.message);
+                    });
+        }
+        function updateCartCount(count) {
+            const cartCountElement = document.getElementById('cart-count');
+            cartCountElement.textContent = count;
+        }
+    </script>
 </html>

@@ -1,6 +1,6 @@
 <%-- 
     Document   : amd
-    Created on : 14 nov 2024, 2:09:59 a.m.
+    Created on : 2 dic 2024, 12:46:56 a.m.
     Author     : Miguel
 --%>
 <%@page import="java.util.Map"%>
@@ -272,8 +272,13 @@
         </nav>
         <%
             // Inicializar el mapa desde Almacen
-            Almacen tienda = new Almacen();
-            tienda.setStocks(Almacen.inicializarStock());
+            Almacen tienda = (Almacen) session.getAttribute("tienda");
+            if (tienda == null) {
+                // Redirigir al servlet de inicialización
+                response.sendRedirect("/Store/almacenController");
+                return;
+            }
+//            tienda.setStocks(Almacen.inicializarStock());
             Map<String, ArrayList<Producto>> stocks = tienda.getStocks();
         %>
         <section class="py-5">
@@ -315,12 +320,7 @@
                                             <p class="card-text"><%= p.getDescripcion()%></p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
-                                                <form action="./../../carritoController" method="POST">
-                                                    <input type="hidden" name="action" value="add">
-                                                    <input type="hidden" name="productId" value="<%= p.getSku()%>">
-                                                    <button type="submit" class="btn btn-custom">Añadir</button>
-                                                </form>
-
+                                                <button class="btn btn-custom add-to-cart">Añadir</button>
                                             </div>
                                         </div>
                                     </div>
@@ -396,18 +396,50 @@
                 </div>
             </div>
         </section>
+        <footer class="text-white py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <h5>CompuStore</h5>
+                        <p>Tu tienda de confianza para tecnología</p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h5>Enlaces</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Sobre nosotros</a></li>
+                            <li><a href="#" class="text-white">Términos y condiciones</a></li>
+                            <li><a href="#" class="text-white">Política de privacidad</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h5>Contacto</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-phone me-2"></i> +1 234 567 890</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@compustore.com</li>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> San Quintin #123</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+                
         <!-- Bootstrap JS and dependencies -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./cart.js" ></script>
         <script>
                                         document.addEventListener('DOMContentLoaded', function () {
                                             const categoryButtons = document.querySelectorAll('.btn-filter');
                                             const productCards = document.querySelectorAll('#productContainer .product-card');
+
+
                                             categoryButtons.forEach(button => {
                                                 button.addEventListener('click', function () {
                                                     const category = this.getAttribute('data-category');
+
                                                     // Remover clase activa de todos los botones
                                                     categoryButtons.forEach(btn => btn.classList.remove('active'));
                                                     this.classList.add('active');
+
                                                     productCards.forEach(card => {
                                                         if (category === 'all' || card.getAttribute('data-category') === category) {
                                                             card.style.display = 'block';
@@ -418,27 +450,6 @@
                                                 });
                                             });
                                         });
-                                        function addToCart(productId) {
-                                            fetch('"carritoController', {
-                                                method: 'POST',
-                                                headers: {
-                                                    'Content-Type': 'application/x-www-form-urlencoded',
-                                                },
-                                                body: `action=add&productId=${productId}`,
-                                            })
-                                                    .then(response => {
-                                                        if (response.ok) {
-                                                            // Opcional: Mostrar mensaje de éxito
-                                                            alert('Producto añadido al carrito');
-                                                        } else {
-                                                            alert('Error al añadir el producto');
-                                                        }
-                                                    })
-                                                    .catch(error => {
-                                                        console.error('Error:', error);
-                                                        alert('Error al procesar la solicitud');
-                                                    });
-                                        }
         </script>
     </body>
 </html>

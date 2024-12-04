@@ -6,8 +6,6 @@ import model.carrito;
 import model.usuarios;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,40 +36,52 @@ public class carritoController extends HttpServlet {
             System.out.println("Action recibida: " + action);
             System.out.println("ProductId recibido: " + productId);
 
-            if (productId == null || productId.trim().isEmpty()) {
-                throw new IllegalArgumentException("ID de producto no válido");
+            if (action == null || action.trim().isEmpty()) {
+                throw new IllegalArgumentException("Acción no válida");
             }
 
-            HttpSession session = request.getSession(false); // Cambiado a false para no crear sesión si no existe
-            if (session == null) {
-                throw new SecurityException("No hay sesión activa");
+            if (action.equalsIgnoreCase("add")) {
+                if (productId == null || productId.trim().isEmpty()) {
+                    throw new IllegalArgumentException("ID de producto no válido");
+                }
+
+                HttpSession session = request.getSession(false); // Cambiado a false para no crear sesión si no existe
+                if (session == null) {
+                    throw new SecurityException("No hay sesión activa");
+                }
+
+                usuarios user = (usuarios) session.getAttribute("loggedUser");
+                if (user == null) {
+                    user = (usuarios) session.getAttribute("userTemp");
+                    if (user == null) {
+                        throw new SecurityException("Usuario no autenticado");
+                    }
+                }
+
+                // Verificar si el carrito existe
+                if (user.getCarritoPersonal() == null) {
+                    user.setCarritoPersonal(new carrito());
+                }
+
+                Almacen tienda = new Almacen();
+                tienda.setStocks(Almacen.inicializarStock());
+
+                Producto producto = tienda.getProductoPorSku(productId);
+                if (producto == null) {
+                    throw new IllegalArgumentException("Producto con ID " + productId + " no encontrado");
+                }
+
+                user.getCarritoPersonal().agregarProducto(producto);
+                int cantidad = user.getCarritoPersonal().getCantidadArticulos(); // Obtener total de productos
+
+                // Respuesta exitosa con más detalles
+                response.setContentType("application/json");
+                response.setStatus(HttpServletResponse.SC_OK);
+//            response.getWriter().write("{\"message\": \"Producto agregado exitosamente\"}");
+                response.getWriter().write(String.valueOf(cantidad)); 
+            } else {
+                throw new IllegalArgumentException("Acción no soportada: " + action);
             }
-
-            usuarios user = (usuarios) session.getAttribute("loggedUser");
-            if (user == null) {
-                throw new SecurityException("Usuario no autenticado");
-            }
-
-            // Verificar si el carrito existe
-            if (user.getCarritoPersonal() == null) {
-                user.setCarritoPersonal(new carrito()); // Asumiendo que tienes un constructor vacío
-            }
-
-            Almacen tienda = new Almacen();
-            tienda.setStocks(Almacen.inicializarStock());
-
-            Producto producto = tienda.getProductoPorSku(productId);
-            if (producto == null) {
-                throw new IllegalArgumentException("Producto con ID " + productId + " no encontrado");
-            }
-
-            user.getCarritoPersonal().agregarProducto(producto);
-
-            // Respuesta exitosa con más detalles
-            response.setContentType("application/json");
-            response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().write("{\"message\": \"Producto agregado exitosamente\"}");
-
         } catch (IllegalArgumentException e) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             response.getWriter().write("Error en los parámetros: " + e.getMessage());

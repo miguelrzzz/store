@@ -10,19 +10,19 @@ package model;
  */
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class carrito {
-private int userID;
+
+    private int userID;
     private Long total;
     private String usuario;
     private LocalDateTime fechaCreacion;
     private ArrayList<Producto> productos;
+    private ArrayList<Producto> productosComprados;
 
     public carrito() {
-        // Inicializar la lista de productos en el constructor vacío
         this.productos = new ArrayList<>();
-        this.fechaCreacion = LocalDateTime.now(); // También es buena práctica inicializar la fecha
+        this.fechaCreacion = LocalDateTime.now();
     }
 
     public carrito(int id, Long total, String usuario, ArrayList<Producto> productos) {
@@ -37,7 +37,7 @@ private int userID;
         if (this.productos == null) {
             this.productos = new ArrayList<>();
         }
-        
+
         // Verificar si el producto ya está en el carrito
         for (Producto p : productos) {
             if (p.getSku().equals(producto.getSku())) {
@@ -46,6 +46,21 @@ private int userID;
             }
         }
         productos.add(producto);
+    }
+
+    public boolean agregaProducto(Producto producto) {
+        if (this.productos == null) {
+            this.productos = new ArrayList<>();
+        }
+
+        // Verificar si el producto ya está en el carrito
+        for (Producto p : productos) {
+            if (p.getSku().equals(producto.getSku())) {
+                p.setCantidadComprada(p.getCantidadComprada() + 1);
+            }
+        }
+        productos.add(producto);
+        return true;
     }
 
     public double calcularTotal() {
@@ -100,5 +115,11 @@ private int userID;
         this.productos = productos;
     }
 
-
+    public int getCantidadArticulos() {
+        int total = 0;
+        for (Producto p : productos) {
+            total += p.getCantidadComprada();
+        }
+        return total;
+    }
 }

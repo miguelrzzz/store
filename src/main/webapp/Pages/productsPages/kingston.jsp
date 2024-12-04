@@ -272,8 +272,13 @@
             </div>
         </nav>
         <%
-            Almacen tienda = new Almacen();
-            tienda.setStocks(Almacen.inicializarStock());
+            Almacen tienda = (Almacen) session.getAttribute("tienda");
+            if (tienda == null) {
+                // Redirigir al servlet de inicialización
+                response.sendRedirect("/Store/almacenController");
+                return;
+            }
+//            tienda.setStocks(Almacen.inicializarStock());
             Map<String, ArrayList<Producto>> stocks = tienda.getStocks();
         %>
         <section class="py-5">
@@ -378,7 +383,7 @@
                                 <p class="card-text"><%= p.getDescripcion()%></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="h5 mb-0">$<%= String.format("%.2f", p.getPrecioOriginal())%></span>
-                                    <button class="btn btn-custom add-to-cart" data-id="<%= p.getSku() %>" onclick="addToCart('<%= p.getSku() %>')">Añadir</button>
+                                    <button class="btn btn-custom add-to-cart" data-id="<%= p.getSku()%>" onclick="addToCart('<%= p.getSku()%>')">Añadir</button>
                                 </div>
                             </div>
                         </div>
@@ -393,35 +398,6 @@
         </section>
         <!-- Bootstrap JS and dependencies -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-function addToCart(productId) {
-    console.log("Enviando solicitud para agregar el producto:", productId);
-
-    fetch('http://localhost:8082/Store/carritoController', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'action=add&productId=' + productId
-    })
-    .then(response => {
-        console.log("Respuesta del servidor:", response);
-        return response.text().then(text => {
-            if (response.ok) {
-                alert('Producto añadido al carrito exitosamente');
-            } else {
-                throw new Error(text || 'Error en la solicitud');
-            }
-        });
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error: ' + error.message);
-    });
-}
-
-
-
-        </script>
+        <script src="cart.js"></script>
     </body>
 </html>
